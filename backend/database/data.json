@@ -1,0 +1,9 @@
+{
+"videogames": [
+  { "id": 1, "titulo": "Pes 2020", "genero": "Deportes", "precio": 41.0 },
+  { "id": 2, "titulo": "Call of duty 4", "genero": "Acción", "precio": 50.0 },
+  { "id": 3, "titulo": "Yu-Gi-Oh!", "genero": "Aventura", "precio": 60.0 },
+  { "id": 4, "titulo": "Gta V", "genero": "Aventura", "precio": 60.0 },
+  { "id": 5, "titulo": "Residen evil 6", "genero": "Terror", "precio": 40.0 }
+]
+}
