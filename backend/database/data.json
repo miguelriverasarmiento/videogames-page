@@ -1,9 +1,46 @@
 {
-"videogames": [
-  { "id": 1, "titulo": "Pes 2020", "genero": "Deportes", "precio": 41.0 },
-  { "id": 2, "titulo": "Call of duty 4", "genero": "Acción", "precio": 50.0 },
-  { "id": 3, "titulo": "Yu-Gi-Oh!", "genero": "Aventura", "precio": 60.0 },
-  { "id": 4, "titulo": "Gta V", "genero": "Aventura", "precio": 60.0 },
-  { "id": 5, "titulo": "Residen evil 6", "genero": "Terror", "precio": 40.0 }
-]
+  "videogames": [
+    {
+      "id": 1,
+      "titulo": "Pes 2020",
+      "genero": "Deportes",
+      "precio": 41
+    },
+    {
+      "id": 2,
+      "titulo": "Call of duty 4",
+      "genero": "Acción",
+      "precio": 50
+    },
+    {
+      "id": 3,
+      "titulo": "Yu-Gi-Oh!",
+      "genero": "Aventura",
+      "precio": 60
+    },
+    {
+      "id": 4,
+      "titulo": "Gta V",
+      "genero": "Aventura",
+      "precio": 60
+    },
+    {
+      "id": 5,
+      "titulo": "Residen evil",
+      "genero": "Terror",
+      "precio": 40
+    },
+    {
+      "id": 6,
+      "titulo": "Gran Turismo 7",
+      "genero": "Deportes",
+      "precio": 66
+    },
+    {
+      "titulo": "Dead island definitive collection",
+      "genero": "Disparos",
+      "precio": 11,
+      "id": "deee017f-7fd5-4295-af26-ea51275da1cf"
+    }
+  ]
 }
