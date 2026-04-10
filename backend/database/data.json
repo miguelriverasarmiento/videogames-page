@@ -14,33 +14,33 @@
     },
     {
       "id": 3,
-      "titulo": "Yu-Gi-Oh!",
+      "titulo": "Yu-Gi-Oh master duel!",
       "genero": "Aventura",
       "precio": 60
     },
     {
       "id": 4,
       "titulo": "Gta V",
-      "genero": "Aventura",
+      "genero": "Accion",
       "precio": 60
     },
     {
       "id": 5,
-      "titulo": "Residen evil",
+      "titulo": "Residen evil 2",
       "genero": "Terror",
       "precio": 40
-    },
-    {
-      "id": 6,
-      "titulo": "Gran Turismo 7",
-      "genero": "Deportes",
-      "precio": 66
     },
     {
       "titulo": "Dead island definitive collection",
       "genero": "Disparos",
       "precio": 11,
       "id": "deee017f-7fd5-4295-af26-ea51275da1cf"
+    },
+    {
+      "titulo": "Ciberpunk 2077",
+      "genero": "Distopia",
+      "precio": 60,
+      "id": "4acb061c-5814-423f-9d8d-7e6b4fa2a780"
     }
   ]
 }

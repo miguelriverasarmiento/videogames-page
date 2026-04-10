@@ -2,13 +2,21 @@ const videogame = require("../database/videogame"); // El servicio llama al mode
 const { v4: uuidv4 } = require("uuid");
 
 const getAllVideogames = () => {
-  const videogames = videogame.getAllVideogames();
-  return videogames;
+  try {
+    const videogames = videogame.getAllVideogames();
+    return videogames;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const getVideogameById = (id) => {
-  const videogameById = videogame.getVideogameById(id);
-  return videogameById;
+  try {
+    const videogameById = videogame.getVideogameById(id);
+    return videogameById;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const addVideogame = (videogameData) => {
@@ -16,18 +24,30 @@ const addVideogame = (videogameData) => {
     ...videogameData,
     id: uuidv4(),
   };
-  const nVideogame = videogame.addVideogame(newVideogame);
-  return nVideogame;
+  try {
+    const nVideogame = videogame.addVideogame(newVideogame);
+    return nVideogame;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const updateVideogame = (id, updatedData) => {
-  const updatedVideogame = videogame.updateVideogame(id, updatedData);
-  return updatedVideogame;
+  try {
+    const updatedVideogame = videogame.updateVideogame(id, updatedData);
+    return updatedVideogame;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const deleteVideogame = (id) => {
-  const deletedVideogame = videogame.deleteVideogame(id);
-  return deletedVideogame;
+  try {
+    const deletedVideogame = videogame.deleteVideogame(id);
+    return deletedVideogame;
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = {

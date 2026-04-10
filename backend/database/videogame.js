@@ -31,11 +31,11 @@ const getVideogameById = (id) => {
 const addVideogame = (videogame) => {
   try {
     const vExist =
-      DB.videogames.findIndex((v) => v.name === videogame.name) > -1;
+      DB.videogames.findIndex((v) => v.titulo === videogame.titulo) > -1;
     if (vExist) {
       throw {
         status: 400,
-        message: `El videojuego con el nombre "${videogame.name}" ya existe.`,
+        message: `El videojuego con el nombre "${videogame.titulo}" ya existe.`,
       };
     }
     DB.videogames.push(videogame);
