@@ -21,12 +21,12 @@
     {
       "id": 4,
       "titulo": "Gta V",
-      "genero": "Accion",
+      "genero": "Aventura",
       "precio": 60
     },
     {
       "id": 5,
-      "titulo": "Residen evil 2",
+      "titulo": "Residen evil 5",
       "genero": "Terror",
       "precio": 40
     },
@@ -41,6 +41,18 @@
       "genero": "Distopia",
       "precio": 60,
       "id": "4acb061c-5814-423f-9d8d-7e6b4fa2a780"
+    },
+    {
+      "titulo": "UFC 3",
+      "genero": "Deporte",
+      "precio": 50,
+      "id": "06ff84b0-c8c3-4d1b-8b3b-9b32c0f31540"
+    },
+    {
+      "titulo": "The king of fighters 2000",
+      "genero": "Pelea",
+      "precio": 20,
+      "id": "835dbbf5-43ee-447b-81a4-bb0463b34e55"
     }
   ]
 }

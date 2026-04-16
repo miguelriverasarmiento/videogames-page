@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Videogame } from '../types/videogame';
+import { updateVideogames } from '../api/videogameApi';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
     videogame: Videogame;
@@ -8,19 +10,39 @@ interface Props {
 function EditVideogameForm({ videogame }: Props) {
 
     const [form, setForm] = useState({
-        titulo: videogame.titulo,
-        genero: videogame.genero,
-        precio: videogame.precio,
+        titulo: '',
+        genero: '',
+        precio: '',
     });
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    useEffect(() => {
+        setForm({
+            titulo: videogame.titulo,
+            genero: videogame.genero,
+            precio: String(videogame.precio),
+        });
+    }, [videogame.titulo, videogame.genero, videogame.precio]);
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(form);
+        const dataSend = {
+            titulo: form.titulo,
+            genero: form.genero,
+            precio: Number(form.precio),
+        };
+        try {
+            await updateVideogames(videogame.id, dataSend);
+            navigate("/");
+        } catch (error) {
+            console.error("Error", error)
+        }
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
-        setForm(prev => ({ ...prev, [name]: value}));// El spread operator ...prev copea todo lo de prev y luego se sobreescribe el campo que se esta editando con name y value que deposita en name
+        setForm(prev => ({ ...prev, [name]: value}));
     };
 
   return (

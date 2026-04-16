@@ -24,7 +24,7 @@ const EditVideogame = () => {
     if (!videogame) return <p>Videojuego no encontrado</p>
 
   return (
-    <div>
+    <div key={videogame.id}>
         <h2>Editar Videojuego</h2>
         <EditVideogameForm videogame={videogame}/>
     </div>

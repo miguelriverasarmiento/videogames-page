@@ -5,7 +5,8 @@ export async function getVideogames(): Promise<Videogame[]> {
     if (!response.ok) {
         throw new Error("Error obtaining the videogames");
     }
-    return await response.json();
+    const result = await response.json();
+    return result;
 }
 
 export async function getVideogameId(id: number | string): Promise<Videogame> {
@@ -13,7 +14,8 @@ export async function getVideogameId(id: number | string): Promise<Videogame> {
     if (!response.ok) {
         throw new Error("Error obtaining the videogame");
     }
-    return await response.json();
+    const result = await response.json();
+    return result.data;
 }
 
 export const createVideogames = async (data: CreateVideogame): Promise<Videogame> => {
@@ -25,7 +27,8 @@ export const createVideogames = async (data: CreateVideogame): Promise<Videogame
     if (!response.ok) {
         throw new Error("Error creating videogame");
     }
-    return await response.json();
+    const result = await response.json();
+    return result.data;
 }
 
 export const updateVideogames = async (id: number | string, data: UpdateVideogame): Promise<Videogame> => {
@@ -37,7 +40,8 @@ export const updateVideogames = async (id: number | string, data: UpdateVideogam
     if (!response.ok) {
         throw new Error("Error updating videogame");
     }
-    return await response.json();
+    const result = await response.json();
+    return result.data;
 }
 
 export const deleteVideogames = async (id: number | string): Promise<void> => {

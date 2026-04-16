@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { createVideogames } from '../api/videogameApi';
+import { useNavigate } from 'react-router-dom';
 
 const VideogameForm = () => {
 
@@ -7,10 +9,22 @@ const VideogameForm = () => {
         genero: "",
         precio: "",
     });
+    const navigate = useNavigate();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(form);
+        const dataSend = {
+            ...form,
+            precio: Number(form.precio),
+        };
+
+        try {
+            const newVideogame =  await createVideogames(dataSend);
+            console.log(newVideogame);
+            navigate("/");
+        } catch (error) {
+            console.error("Error", error)
+        }
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
