@@ -9,6 +9,12 @@ const VideogameList = () => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null);
 
+    const handleRefresh = () => {
+        getVideogames()
+            .then(data => setVideogames(data))
+            .catch(error => setError(error));
+    };
+
     useEffect(() => {
         getVideogames()
         .then(data => setVideogames(data))
@@ -22,7 +28,7 @@ const VideogameList = () => {
         <div>
             <h2>Lista de videojuegos</h2>
             {videogames.map(videogame => (
-                <VideogameCard key={videogame.id} videogame={videogame} />
+                <VideogameCard key={videogame.id} videogame={videogame} onDelete={handleRefresh} />
             ))}
         </div>
     )

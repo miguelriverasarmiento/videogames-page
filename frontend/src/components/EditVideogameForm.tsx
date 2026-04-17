@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import type { Videogame } from '../types/videogame';
 import { updateVideogames } from '../api/videogameApi';
 import { useNavigate } from 'react-router-dom';
@@ -10,18 +10,10 @@ interface Props {
 function EditVideogameForm({ videogame }: Props) {
 
     const [form, setForm] = useState({
-        titulo: '',
-        genero: '',
-        precio: '',
+        titulo: videogame.titulo,
+        genero: videogame.genero,
+        precio: String(videogame.precio),
     });
-
-    useEffect(() => {
-        setForm({
-            titulo: videogame.titulo,
-            genero: videogame.genero,
-            precio: String(videogame.precio),
-        });
-    }, [videogame.titulo, videogame.genero, videogame.precio]);
 
     const navigate = useNavigate();
 

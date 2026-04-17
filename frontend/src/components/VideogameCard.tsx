@@ -1,18 +1,29 @@
 import type { Videogame } from "../types/videogame";
 import { Link } from "react-router-dom";
+import { deleteVideogames } from "../api/videogameApi";
 
 interface Props {
     videogame: Videogame;
+    onDelete: () => void;
 }
 
-const VideogameCard = ({ videogame }: Props) => {
+const VideogameCard = ({ videogame, onDelete }: Props) => {
+
+  const handleDelete = async() => {
+    const confirm  = window.confirm("¿Eliminar este videojuego?")
+    if (confirm) {
+      await deleteVideogames(videogame.id)
+      onDelete();
+    }
+  }
+
   return (
     <div>
         <h3>{videogame.titulo}</h3>
         <p>Género: {videogame.genero}</p>
         <p>Precio: ${videogame.precio}</p>
         <Link to={`/edit/${videogame.id}`}><button>Editar</button></Link>
-        <button>Eliminar</button>
+        <button onClick={handleDelete}>Eliminar</button>
     </div>
   )
 }

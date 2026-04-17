@@ -14,7 +14,7 @@
     },
     {
       "id": 3,
-      "titulo": "Yu-Gi-Oh master duel!",
+      "titulo": "Yu-Gi-Oh master duel",
       "genero": "Aventura",
       "precio": 60
     },
@@ -31,15 +31,9 @@
       "precio": 40
     },
     {
-      "titulo": "Dead island definitive collection",
-      "genero": "Disparos",
-      "precio": 11,
-      "id": "deee017f-7fd5-4295-af26-ea51275da1cf"
-    },
-    {
       "titulo": "Cyberpunk 2077",
       "genero": "Distopia",
-      "precio": 60,
+      "precio": 55,
       "id": "4acb061c-5814-423f-9d8d-7e6b4fa2a780"
     },
     {
@@ -53,6 +47,12 @@
       "genero": "Pelea",
       "precio": 20,
       "id": "835dbbf5-43ee-447b-81a4-bb0463b34e55"
+    },
+    {
+      "titulo": "Dead island",
+      "genero": "Terror",
+      "precio": 15,
+      "id": "31f98711-bf52-4c1d-b7a8-5d9955d01982"
     }
   ]
 }
