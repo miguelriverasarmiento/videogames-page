@@ -2,6 +2,7 @@ import type { Videogame } from "../types/videogame";
 import VideogameCard from "./VideogameCard";
 import { getVideogames } from "../api/videogameApi";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const VideogameList = () => {
 
