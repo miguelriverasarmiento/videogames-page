@@ -1,53 +1,23 @@
-const videogame = require("../database/videogame"); // El servicio llama al modelo
-const { v4: uuidv4 } = require("uuid");
+const videogame = require("../database/videogame"); // El servicio llama a database
 
-const getAllVideogames = () => {
-  try {
-    const videogames = videogame.getAllVideogames();
-    return videogames;
-  } catch (error) {
-    throw error;
-  }
+const getAllVideogames = async () => {
+  return await videogame.getAllVideogames();
 };
 
-const getVideogameById = (id) => {
-  try {
-    const videogameById = videogame.getVideogameById(id);
-    return videogameById;
-  } catch (error) {
-    throw error;
-  }
+const getVideogameById = async (id) => {
+  return await videogame.getVideogameById(id);
 };
 
-const addVideogame = (videogameData) => {
-  const newVideogame = {
-    ...videogameData,
-    id: uuidv4(),
-  };
-  try {
-    const nVideogame = videogame.addVideogame(newVideogame);
-    return nVideogame;
-  } catch (error) {
-    throw error;
-  }
+const addVideogame = async (videogameData) => {
+  return await videogame.addVideogame(videogameData);
 };
 
 const updateVideogame = (id, updatedData) => {
-  try {
-    const updatedVideogame = videogame.updateVideogame(id, updatedData);
-    return updatedVideogame;
-  } catch (error) {
-    throw error;
-  }
+  return await videogame.updateVideogame( id, updatedData)
 };
 
 const deleteVideogame = (id) => {
-  try {
-    const deletedVideogame = videogame.deleteVideogame(id);
-    return deletedVideogame;
-  } catch (error) {
-    throw error;
-  }
+  return await videogame.deleteVideogame(id);
 };
 
 module.exports = {
