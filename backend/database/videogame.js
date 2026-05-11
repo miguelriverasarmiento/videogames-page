@@ -1,83 +1,40 @@
-const DB = require("./data.json");
-const { saveToDatabase } = require("./utils");
+const Videogame = require("../models/Videogame");
 
-const getAllVideogames = () => {
-  try {
-    const videogames = DB.videogames;
-    if (!videogames) {
-      throw new Error("No se encontraron videojuegos en la base de datos.");
-    }
-    return videogames;
-  } catch (error) {
-    throw {
-      status: 500,
-      message: "Error fetching videogames: " + error.message,
-    };
-  }
+const getAllVideogames = async () => {
+  const videogames = await Videogame.find();
+  return videogames;
 };
 
 const getVideogameById = (id) => {
-  try {
-    const videogame = DB.videogames.find((v) => v.id == id);
-    if (!videogame) {
-      throw new Error(`No se encontró un videojuego con el ID: ${id}`);
-    }
-    return videogame;
-  } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+  const videogame = await Videogame.findById(id);
+  if (!videogame) {
+    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` };
   }
+  return videogame;
 };
 
-const addVideogame = (videogame) => {
-  try {
-    const vExist =
-      DB.videogames.findIndex((v) => v.titulo === videogame.titulo) > -1;
-    if (vExist) {
-      throw {
-        status: 400,
-        message: `El videojuego con el nombre "${videogame.titulo}" ya existe.`,
-      };
-    }
-    DB.videogames.push(videogame);
-    saveToDatabase(DB);
-    return videogame;
-  } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
-  }
+const addVideogame = async (videogameData) => {
+  const newVideogame = new Videogame(videogameData)
+  const savedVideogame = await newVideogame.save()
+  return savedVideogame;
 };
 
-const updateVideogame = (id, updatedData) => {
-  try {
-    const index = DB.videogames.findIndex((v) => v.id == id);
-    if (index === -1) {
-      throw {
-        status: 400,
-        message: `Videojuego con ID ${id} no encontrado.`,
-      };
-    }
-    DB.videogames[index] = { ...DB.videogames[index], ...updatedData };
-    saveToDatabase(DB);
-    return DB.videogames[index];
-  } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+const updateVideogame = async (id, updatedData) => {
+  const videogame = await Videogame.findByIdAndUpdate(id, updatedData, {
+    new: true, // Retorna el documento actualizado
+  });
+  if (!videogame) {
+    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` }
   }
+  return videogame;
 };
 
-const deleteVideogame = (id) => {
-  try {
-    const index = DB.videogames.findIndex((v) => v.id == id);
-    if (index === -1) {
-      throw {
-        status: 400,
-        message: `Videojuego con ID ${id} no encontrado.`,
-      };
-    }
-    const deletedVideogame = DB.videogames.splice(index, 1); // Elimina el videojuego y lo devuelve en un array
-    saveToDatabase(DB);
-    return deletedVideogame[0];
-  } catch (error) {
-    throw { status: error?.status || 500, message: error?.message || error };
+const deleteVideogame = async (id) => {
+  const videogame = await Videogame.findByIdAndDelete(id);
+  if (!videogame) {
+    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` }
   }
+  return videogame;
 };
 
 module.exports = {

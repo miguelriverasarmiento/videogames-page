@@ -53,6 +53,12 @@
       "genero": "Terror",
       "precio": 15,
       "id": "31f98711-bf52-4c1d-b7a8-5d9955d01982"
+    },
+    {
+      "titulo": "Pes 2021",
+      "genero": "Deporte",
+      "precio": 14,
+      "id": "f15e3643-44e2-4c6e-9c4f-8546b8093211"
     }
   ]
 }
