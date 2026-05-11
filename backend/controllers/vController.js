@@ -1,8 +1,8 @@
 const vServices = require("../services/vServices"); // El controlador llama al servicio
 
-const getAllVideogames = (req, res) => {
+const getAllVideogames = async (req, res) => {
   try {
-    const videogames = vServices.getAllVideogames();
+    const videogames = await vServices.getAllVideogames();
     res.json(videogames);
   } catch (error) {
     res
@@ -11,16 +11,17 @@ const getAllVideogames = (req, res) => {
   }
 };
 
-const getVideogameById = (req, res) => {
-  const id = isNaN(req.params.id) ? req.params.id : parseInt(req.params.id);
+const getVideogameById = async (req, res) => {
+  const { id } = req.params;
   if (!id) {
     res.status(400).send({
       status: "FAILED",
       data: { error: "ID del videojuego es requerido" },
     });
+    return;
   }
   try {
-    const videogame = vServices.getVideogameById(id);
+    const videogame = await vServices.getVideogameById(id);
     res.send({ status: "OK", data: videogame });
   } catch (error) {
     res
@@ -29,22 +30,24 @@ const getVideogameById = (req, res) => {
   }
 };
 
-const addVideogame = (req, res) => {
-  const { titulo, genero, precio } = req.body;
-  if (!titulo || !genero || !precio) {
+const addVideogame = async (req, res) => {
+  const { titulo, imagen, descripcion, genero, plataforma, precio } = req.body;
+  if (!titulo || !imagen || !descripcion || !genero || !plataforma || !precio) {
     res.status(400).send({
       status: "FAILED",
-      data: { error: "Título, género y precio son requeridos" },
+      data: { error: "Todos los campos son requeridos" },
     });
     return;
   }
-  const nVideogame = {
-    titulo: titulo,
-    genero: genero,
-    precio: precio,
-  };
   try {
-    const newVideogame = vServices.addVideogame(nVideogame);
+    const newVideogame = await vServices.addVideogame({
+      titulo,
+      imagen,
+      descripcion,
+      genero,
+      plataforma,
+      precio,
+    });
     res.status(201).send({ status: "OK", data: newVideogame });
   } catch (error) {
     res
@@ -53,21 +56,19 @@ const addVideogame = (req, res) => {
   }
 };
 
-const updateVideogame = (req, res) => {
-  const id = isNaN(req.params.id) ? req.params.id : parseInt(req.params.id);
-  if (!id) {
-    res.status(400).send({
-      status: "FAILED",
-      data: { error: "ID del videojuego es requerido" },
-    });
-  }
+const updateVideogame = async (req, res) => {
+  const { id } = req.params;
+  const { titulo, imagen, descripcion, genero, plataforma, precio } = req.body;
+  const updatedData = {};
+  if (titulo) updateData.titulo = titulo;
+  if (imagen) updateData.imagen = imagen;
+  if (descripcion) updateData.descripcion = descripcion;
+  if (genero) updateData.genero = genero;
+  if (plataforma) updateData.plataforma = plataforma;
+  if (precio) updateData.precio = precio;
+
   try {
-    const { titulo, genero, precio } = req.body;
-    const updatedData = {};
-    if (titulo) updatedData.titulo = titulo;
-    if (genero) updatedData.genero = genero;
-    if (precio) updatedData.precio = precio;
-    const updatedVideogame = vServices.updateVideogame(id, updatedData);
+    const updatedVideogame = await vServices.updateVideogame(id, updatedData);
     res.send({ status: "OK", data: updatedVideogame });
   } catch (error) {
     res
@@ -76,8 +77,8 @@ const updateVideogame = (req, res) => {
   }
 };
 
-const deleteVideogame = (req, res) => {
-  const id = isNaN(req.params.id) ? req.params.id : parseInt(req.params.id);
+const deleteVideogame = async (req, res) => {
+  const { id } = req.params;
   if (!id) {
     res.status(400).send({
       status: "FAILED",
@@ -85,7 +86,7 @@ const deleteVideogame = (req, res) => {
     });
   }
   try {
-    vServices.deleteVideogame(id);
+    await vServices.deleteVideogame(id);
     res.status(204).json({ message: "Videojuego eliminado exitosamente" });
   } catch (error) {
     res
