@@ -32,7 +32,7 @@ const getVideogameById = async (req, res) => {
 
 const addVideogame = async (req, res) => {
   const { titulo, imagen, descripcion, genero, plataforma, precio } = req.body;
-  if (!titulo || !imagen || !descripcion || !genero || !plataforma || !precio) {
+  if (!titulo || !genero || !plataforma || !precio) {
     res.status(400).send({
       status: "FAILED",
       data: { error: "Todos los campos son requeridos" },
@@ -60,12 +60,12 @@ const updateVideogame = async (req, res) => {
   const { id } = req.params;
   const { titulo, imagen, descripcion, genero, plataforma, precio } = req.body;
   const updatedData = {};
-  if (titulo) updateData.titulo = titulo;
-  if (imagen) updateData.imagen = imagen;
-  if (descripcion) updateData.descripcion = descripcion;
-  if (genero) updateData.genero = genero;
-  if (plataforma) updateData.plataforma = plataforma;
-  if (precio) updateData.precio = precio;
+  if (titulo) updatedData.titulo = titulo;
+  if (imagen) updatedData.imagen = imagen;
+  if (descripcion) updatedData.descripcion = descripcion;
+  if (genero) updatedData.genero = genero;
+  if (plataforma) updatedData.plataforma = plataforma;
+  if (precio) updatedData.precio = precio;
 
   try {
     const updatedVideogame = await vServices.updateVideogame(id, updatedData);

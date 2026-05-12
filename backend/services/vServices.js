@@ -12,11 +12,11 @@ const addVideogame = async (videogameData) => {
   return await videogame.addVideogame(videogameData);
 };
 
-const updateVideogame = (id, updatedData) => {
-  return await videogame.updateVideogame( id, updatedData)
+const updateVideogame = async (id, updatedData) => {
+  return await videogame.updateVideogame(id, updatedData);
 };
 
-const deleteVideogame = (id) => {
+const deleteVideogame = async (id) => {
   return await videogame.deleteVideogame(id);
 };
 

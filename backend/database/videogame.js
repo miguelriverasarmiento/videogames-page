@@ -5,7 +5,7 @@ const getAllVideogames = async () => {
   return videogames;
 };
 
-const getVideogameById = (id) => {
+const getVideogameById = async (id) => {
   const videogame = await Videogame.findById(id);
   if (!videogame) {
     throw { status: 404, message: `Videojuego con ID ${id} no encontrado` };
@@ -14,8 +14,8 @@ const getVideogameById = (id) => {
 };
 
 const addVideogame = async (videogameData) => {
-  const newVideogame = new Videogame(videogameData)
-  const savedVideogame = await newVideogame.save()
+  const newVideogame = new Videogame(videogameData);
+  const savedVideogame = await newVideogame.save();
   return savedVideogame;
 };
 
@@ -24,7 +24,7 @@ const updateVideogame = async (id, updatedData) => {
     new: true, // Retorna el documento actualizado
   });
   if (!videogame) {
-    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` }
+    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` };
   }
   return videogame;
 };
@@ -32,7 +32,7 @@ const updateVideogame = async (id, updatedData) => {
 const deleteVideogame = async (id) => {
   const videogame = await Videogame.findByIdAndDelete(id);
   if (!videogame) {
-    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` }
+    throw { status: 404, message: `Videojuego con ID ${id} no encontrado` };
   }
   return videogame;
 };
