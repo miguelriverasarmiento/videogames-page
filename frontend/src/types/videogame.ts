@@ -1,7 +1,10 @@
 export interface Videogame {
     id: number | string;
     titulo: string;
+    imagen?: string;
+    descripcion?: string;
     genero: string;
+    plataforma: string;
     precio: number;
 }
 
