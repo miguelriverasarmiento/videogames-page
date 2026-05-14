@@ -25,9 +25,12 @@ const ViewVideogame = () => {
   return (
     <div>
         <h2>Detalles de videojuego</h2>
+        {videogame.imagen && <img src={videogame.imagen} alt={videogame.titulo} style={{ width: "200px" }} />}
         <h3>{videogame.titulo}</h3>
         <p>Género: {videogame.genero}</p>
         <p>Precio: ${videogame.precio}</p>
+        <p>Plataforma: {videogame.plataforma}</p>
+        {videogame.descripcion && <p>Descripción: {videogame.descripcion}</p>}
     </div>
   )
 }

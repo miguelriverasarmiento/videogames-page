@@ -20,8 +20,10 @@ const VideogameCard = ({ videogame, onDelete }: Props) => {
   return (
     <div>
       <Link to={`/videogame/${videogame.id}`}>
+        {videogame.imagen && <img src={videogame.imagen} alt={videogame.titulo} style={{ width: "200px" }} />}
         <h3>{videogame.titulo}</h3>
         <p>Género: {videogame.genero}</p>
+        <p>Plataforma: {videogame.plataforma}</p>
         <p>Precio: ${videogame.precio}</p>
       </Link>
         <Link to={`/edit/${videogame.id}`}><button>Editar</button></Link>
