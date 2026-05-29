@@ -20,14 +20,19 @@ const VideogameCard = ({ videogame, onDelete }: Props) => {
   return (
     <div>
       <Link to={`/videogame/${videogame.id}`}>
-        {videogame.imagen && <img src={videogame.imagen} alt={videogame.titulo} style={{ width: "200px" }} />}
-        <h3>{videogame.titulo}</h3>
-        <p>Género: {videogame.genero}</p>
-        <p>Plataforma: {videogame.plataforma}</p>
-        <p>Precio: ${videogame.precio}</p>
+        <div className="justify-items-center mt-4">
+          {videogame.imagen && <img src={videogame.imagen} alt={videogame.titulo} style={{ width: "200px" }} />}
+          <div className="justify-items-center text-center mt-4">
+            <h3>{videogame.titulo}</h3>
+            <p>Género: {videogame.genero}</p>
+            <p>Precio: ${videogame.precio.toLocaleString("es-CL")}</p>
+          </div>
+        </div>
       </Link>
-        <Link to={`/edit/${videogame.id}`}><button>Editar</button></Link>
-        <button onClick={handleDelete}>Eliminar</button>
+        <div className="flex justify-center gap-1 mt-2">
+          <Link to={`/edit/${videogame.id}`}><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button></Link>
+          <button onClick={handleDelete} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+        </div>
     </div>
   )
 }

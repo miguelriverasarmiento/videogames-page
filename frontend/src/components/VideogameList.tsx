@@ -2,7 +2,6 @@ import type { Videogame } from "../types/videogame";
 import VideogameCard from "./VideogameCard";
 import { getVideogames } from "../api/videogameApi";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const VideogameList = () => {
 
@@ -23,14 +22,15 @@ const VideogameList = () => {
         .finally(() => setLoading(false));
     }, []);
     
-    if (loading) return <p>Cargando...</p>
-    if (error) return <p>Error: {error}</p>
+    if (loading) return <p className="flex justify-center mt-4">Cargando...</p>
+    if (error) return <p className="flex justify-center mt-4">Error: {error}</p>
     return (
-        <div>
-            <h2>Lista de videojuegos</h2>
-            {videogames.map(videogame => (
-                <VideogameCard key={videogame.id} videogame={videogame} onDelete={handleRefresh} />
-            ))}
+        <div className="container mx-auto pb-4 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 justify-items-center">
+                {videogames.map(videogame => (
+                    <VideogameCard key={videogame.id} videogame={videogame} onDelete={handleRefresh} />
+                ))}
+            </div>
         </div>
     )
 }
