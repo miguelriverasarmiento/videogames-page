@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
 
-const Header = () => {
+interface Props {
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
+}
+
+const Header = ({ searchQuery, setSearchQuery }: Props) => {
     return (
         <div className="bg-gray-800 text-white p-4">
             <div className="flex items-center justify-center">
@@ -14,7 +19,12 @@ const Header = () => {
                     </button>
                 </Link>
                 <div>
-                    <input type="text" placeholder="Buscar..." className="ml-4 p-2 rounded bg-gray-600 text-white placeholder:text-gray-400" />
+                    <input 
+                        type="text" 
+                        placeholder="Buscar..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="ml-4 p-2 rounded bg-gray-600 text-white placeholder:text-gray-400" />
                 </div>
             </div>
         </div>

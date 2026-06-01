@@ -13,7 +13,7 @@ const VideogameCard = ({ videogame, onDelete }: Props) => {
     const confirm  = window.confirm("¿Eliminar este videojuego?")
     if (confirm) {
       await deleteVideogames(videogame.id)
-      onDelete();
+      onDelete(); // Llamar a la función de actualización después de eliminar el videojuego
     }
   }
 
