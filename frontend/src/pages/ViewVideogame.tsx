@@ -18,15 +18,15 @@ const ViewVideogame = () => {
           .finally(() => setLoading(false))
     }, [id])
 
-    if (loading) return <p>Cargando...</p>
-    if (error) return <p>Error: {error}</p>
-    if (!videogame) return <p>Videojuego no encontrado</p>
+    if (loading) return <p className="flex justify-center mt-4">Cargando...</p>
+    if (error) return <p className="flex justify-center mt-4">Error: {error}</p>
+    if (!videogame) return <p className="flex justify-center mt-4">Videojuego no encontrado</p>
 
   return (
-    <div>
-        <h2>Detalles de videojuego</h2>
-        {videogame.imagen && <img src={videogame.imagen} alt={videogame.titulo} style={{ width: "200px" }} />}
-        <h3>{videogame.titulo}</h3>
+    <div className="ml-8 mt-8">
+        <h2 className="text-xl">Detalles de videojuego</h2>
+        {videogame.imagen && <img className="mt-5" src={videogame.imagen} alt={videogame.titulo} style={{ width: "200px" }} />}
+        <h3 className="mt-4 font-medium">{videogame.titulo}</h3>
         <p>Género: {videogame.genero}</p>
         <p>Precio: ${videogame.precio.toLocaleString("es-CL")}</p>
         <p>Plataforma: {videogame.plataforma}</p>

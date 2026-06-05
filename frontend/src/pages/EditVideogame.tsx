@@ -25,7 +25,7 @@ const EditVideogame = () => {
 
   return (
     <div key={videogame.id}>
-        <h2>Editar Videojuego</h2>
+        <h2 className="ml-5 mt-5">Editar Videojuego</h2>
         <EditVideogameForm videogame={videogame}/>
     </div>
   )
